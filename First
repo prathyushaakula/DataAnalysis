@@ -1,0 +1,23 @@
+from tweepy.streaming import StreamListener
+from tweepy import OAuthHandler
+from tweepy import Stream
+access_token ="1402287440023277568-ymPcXGllCsL99v6RJmoL7jUj0jS9tJ"
+access_token_secret ="WjPywoYYxGreLu4p8oVWWgQQVzpKTBULAzWTMF1Nrf7N2"
+consumer_key = "sYl3oa010WhxeJZDxZDFJ2rol"
+consumer_secret ="R4NZYAyO6npTou1gx4qG6fVCb1tjPOAwlBq07arCF9q43LsbAB"
+file2write=open("twitter_data.txt",'w')
+i=0;
+class StdOutListener(StreamListener):
+    def on_data(self, data):
+        print(data)
+        file2write.write(data)
+        return True
+    def on_error(self, status):
+        print(status)
+if __name__ == '__main__':
+    l = StdOutListener()
+    auth = OAuthHandler(consumer_key, consumer_secret)
+    auth.set_access_token(access_token, access_token_secret)
+    stream = Stream(auth, l)
+    stream.filter(languages=["en"],track=['COVID-19'])
+    file2write.close()

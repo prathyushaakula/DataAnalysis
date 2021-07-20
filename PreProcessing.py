@@ -169,5 +169,3 @@ for word, count in sorted(word_counts.items()):
         
 file2write.close()
 file2words.close()       
-
-

@@ -9,7 +9,7 @@ consumer_secret ="5EF2QwnuLuvd2m6vccy6mAACBMbPtCGbt97hWakaZQ6xrvsrNi"
 file2write=open("twitter_data.txt",'w')
 i=0;
 #no of tweets need to load 
-no_tweets=100
+no_tweets=30
 lines=[]
 #This is a basic listener that just prints received tweets to stdout.
 class StdOutListener(StreamListener):
@@ -40,5 +40,5 @@ if __name__ == '__main__':
     auth.set_access_token(access_token, access_token_secret)
     stream = Stream(auth, l)
     #This line filter Twitter Streams to capture data by the keywords: 'python', 'javascript', 'ruby'
-    stream.filter(languages=["en"],track=['AustrianGP'])
+    stream.filter(languages=["en"],track=['Vaccine'])
     file2write.close()
